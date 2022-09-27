@@ -11,12 +11,12 @@
 >>              : (2)My
 >> V180121      : World.
 ************************************************************/
-module sha1_round(
-  input [159 : 0] 
-);
+//module sha1_round(
+//  input [159 : 0] 
+//);
 
 
-/*
+
 module sha1_round(
     input  [31:0] a,
     input  [31:0] b,
@@ -64,4 +64,3 @@ function [31:0]F_t20;//20<=t<=39;60<=t<=79
 endfunction
 
 endmodule
-*/
