@@ -3,16 +3,15 @@ module sha1_con(
   input         rst_n ,
   input         valid ,
 
-  output [7 :0] reg t,
-  output ready_t
+  output reg [7 :0] t,
+  output  ready_t
 );
 
   parameter IDLE  = 2'b00;
-//  parameter INIT  = 2'b01;
   parameter ROUND = 2'b01;
 
   reg [1 :0] s_cur, s_next;
-//-------------------------- First state machine -------------------------------
+  //-------------------------- First state machine -------------------------------
   always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
       s_cur <= IDLE;
@@ -23,7 +22,12 @@ module sha1_con(
   end
 
 //-------------------------- Second state machine -------------------------------
-//--- It can be optimized ---
+/*
+  wire [1 :0] s_n;
+  assign s_n = (s_cur == IDLE)? (valid? ROUND: IDLE): ((t < 8'h64)? ROUND: IDLE);
+  s_next = s_n;
+*/
+
   always @(*) begin
     case (s_cur)
       IDLE:begin
@@ -55,13 +59,5 @@ module sha1_con(
     end
     else t <= 7'b0;
   end
-
-  always @(posedge clk or negedge rst_n) begin
-    if(!rst_n)
-      ready_t <= 1'b0;
-    else if(t == 8'h63)
-      ready_t <= 1'b1;
-    else ready_t <= 1'b0;
-  end
-// assign ready_t = ((s_cur == ROUND) && (t == 8'h63)) 
+  assign ready_t = ((s_cur == ROUND) && (t == 8'h63)) ;
 endmodule
