@@ -22,15 +22,15 @@ void Vsha1_round___024root__traceInitSub0(Vsha1_round___024root* vlSelf, Verilat
     if (false && tracep && c) {}  // Prevent unused
     // Body
     {
-        tracep->declArray(c+6,"din", false,-1, 159,0);
+        tracep->declArray(c+6,"r_din", false,-1, 159,0);
         tracep->declBus(c+11,"w", false,-1, 31,0);
         tracep->declBus(c+12,"round", false,-1, 7,0);
-        tracep->declArray(c+13,"dout", false,-1, 159,0);
+        tracep->declArray(c+13,"r_dout", false,-1, 159,0);
         tracep->declBus(c+23,"sha1_round N", false,-1, 31,0);
-        tracep->declArray(c+6,"sha1_round din", false,-1, 159,0);
+        tracep->declArray(c+6,"sha1_round r_din", false,-1, 159,0);
         tracep->declBus(c+11,"sha1_round w", false,-1, 31,0);
         tracep->declBus(c+12,"sha1_round round", false,-1, 7,0);
-        tracep->declArray(c+13,"sha1_round dout", false,-1, 159,0);
+        tracep->declArray(c+13,"sha1_round r_dout", false,-1, 159,0);
         tracep->declBus(c+1,"sha1_round f", false,-1, 31,0);
         tracep->declBus(c+2,"sha1_round k", false,-1, 31,0);
         tracep->declBus(c+3,"sha1_round a_shift", false,-1, 31,0);
@@ -82,15 +82,15 @@ void Vsha1_round___024root__traceFullSub0(Vsha1_round___024root* vlSelf, Verilat
         tracep->fullIData(oldp+3,(vlSelf->sha1_round__DOT__a_shift),32);
         tracep->fullIData(oldp+4,(vlSelf->sha1_round__DOT__b_shift),32);
         tracep->fullIData(oldp+5,(vlSelf->sha1_round__DOT__add_result),32);
-        tracep->fullWData(oldp+6,(vlSelf->din),160);
+        tracep->fullWData(oldp+6,(vlSelf->r_din),160);
         tracep->fullIData(oldp+11,(vlSelf->w),32);
         tracep->fullCData(oldp+12,(vlSelf->round),8);
-        tracep->fullWData(oldp+13,(vlSelf->dout),160);
-        tracep->fullIData(oldp+18,(vlSelf->din[4U]),32);
-        tracep->fullIData(oldp+19,(vlSelf->din[3U]),32);
-        tracep->fullIData(oldp+20,(vlSelf->din[2U]),32);
-        tracep->fullIData(oldp+21,(vlSelf->din[1U]),32);
-        tracep->fullIData(oldp+22,(vlSelf->din[0U]),32);
+        tracep->fullWData(oldp+13,(vlSelf->r_dout),160);
+        tracep->fullIData(oldp+18,(vlSelf->r_din[4U]),32);
+        tracep->fullIData(oldp+19,(vlSelf->r_din[3U]),32);
+        tracep->fullIData(oldp+20,(vlSelf->r_din[2U]),32);
+        tracep->fullIData(oldp+21,(vlSelf->r_din[1U]),32);
+        tracep->fullIData(oldp+22,(vlSelf->r_din[0U]),32);
         tracep->fullIData(oldp+23,(0x20U),32);
     }
 }

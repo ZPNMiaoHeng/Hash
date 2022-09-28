@@ -35,11 +35,11 @@ void sim_init(){
 //    top->rst_n = 0;                                                // init signals
 //    top->clk   = 0;
 //    top->valid = 1;
-    top->din[0] = 1;
-    top->din[1] = 0;
-    top->din[2] = 0;
-    top->din[3] = 0;
-    top->din[4] = 0;
+    top->r_din[0] = 1;
+    top->r_din[1] = 0;
+    top->r_din[2] = 0;
+    top->r_din[3] = 0;
+    top->r_din[4] = 0;
 }
 
 

@@ -21,9 +21,9 @@ VL_MODULE(Vsha1_round___024root) {
 
     // PORTS
     VL_IN8(round,7,0);
-    VL_INW(din,159,0,5);
+    VL_INW(r_din,159,0,5);
     VL_IN(w,31,0);
-    VL_OUTW(dout,159,0,5);
+    VL_OUTW(r_dout,159,0,5);
 
     // LOCAL SIGNALS
     IData/*31:0*/ sha1_round__DOT__f;
@@ -34,9 +34,9 @@ VL_MODULE(Vsha1_round___024root) {
 
     // LOCAL VARIABLES
     CData/*7:0*/ sha1_round__DOT____Vtogcov__round;
-    VlWide<5>/*159:0*/ sha1_round__DOT____Vtogcov__din;
+    VlWide<5>/*159:0*/ sha1_round__DOT____Vtogcov__r_din;
     IData/*31:0*/ sha1_round__DOT____Vtogcov__w;
-    VlWide<5>/*159:0*/ sha1_round__DOT____Vtogcov__dout;
+    VlWide<5>/*159:0*/ sha1_round__DOT____Vtogcov__r_dout;
     IData/*31:0*/ sha1_round__DOT____Vtogcov__f;
     IData/*31:0*/ sha1_round__DOT____Vtogcov__k;
     IData/*31:0*/ sha1_round__DOT____Vtogcov__a_shift;

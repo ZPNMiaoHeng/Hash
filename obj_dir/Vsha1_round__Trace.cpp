@@ -30,15 +30,15 @@ void Vsha1_round___024root__traceChgSub0(Vsha1_round___024root* vlSelf, Verilate
             tracep->chgIData(oldp+3,(vlSelf->sha1_round__DOT__b_shift),32);
             tracep->chgIData(oldp+4,(vlSelf->sha1_round__DOT__add_result),32);
         }
-        tracep->chgWData(oldp+5,(vlSelf->din),160);
+        tracep->chgWData(oldp+5,(vlSelf->r_din),160);
         tracep->chgIData(oldp+10,(vlSelf->w),32);
         tracep->chgCData(oldp+11,(vlSelf->round),8);
-        tracep->chgWData(oldp+12,(vlSelf->dout),160);
-        tracep->chgIData(oldp+17,(vlSelf->din[4U]),32);
-        tracep->chgIData(oldp+18,(vlSelf->din[3U]),32);
-        tracep->chgIData(oldp+19,(vlSelf->din[2U]),32);
-        tracep->chgIData(oldp+20,(vlSelf->din[1U]),32);
-        tracep->chgIData(oldp+21,(vlSelf->din[0U]),32);
+        tracep->chgWData(oldp+12,(vlSelf->r_dout),160);
+        tracep->chgIData(oldp+17,(vlSelf->r_din[4U]),32);
+        tracep->chgIData(oldp+18,(vlSelf->r_din[3U]),32);
+        tracep->chgIData(oldp+19,(vlSelf->r_din[2U]),32);
+        tracep->chgIData(oldp+20,(vlSelf->r_din[1U]),32);
+        tracep->chgIData(oldp+21,(vlSelf->r_din[0U]),32);
     }
 }
 

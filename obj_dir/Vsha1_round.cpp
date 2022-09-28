@@ -10,10 +10,10 @@
 
 Vsha1_round::Vsha1_round(VerilatedContext* _vcontextp__, const char* _vcname__)
     : vlSymsp{new Vsha1_round__Syms(_vcontextp__, _vcname__, this)}
-    , din{vlSymsp->TOP.din}
+    , r_din{vlSymsp->TOP.r_din}
     , w{vlSymsp->TOP.w}
     , round{vlSymsp->TOP.round}
-    , dout{vlSymsp->TOP.dout}
+    , r_dout{vlSymsp->TOP.r_dout}
     , rootp{&(vlSymsp->TOP)}
 {
 }

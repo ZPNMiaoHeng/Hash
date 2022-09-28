@@ -14,12 +14,12 @@
 /* verilator lint_off UNSIGNED */
 module sha1_round
     #(parameter N = 32)(
-        input [159 : 0]  din      ,
+        input [159 : 0]  r_din    ,
         input [31  : 0]  w        ,
         input [7   : 0]  round    ,
 //        input            valid_r  ,                  // round 有效信号
     
-        output [159 : 0] dout     
+        output [159 : 0] r_dout     
 //        output           ready_r                    // 80 轮加密结束后拉高
 );
 
@@ -27,11 +27,11 @@ module sha1_round
     reg [N-1: 0] f;
     reg [N-1: 0] k;
     wire [N-1: 0] a_shift, b_shift, add_result;
-    wire [N-1: 0] a = din[159: 128];
-    wire [N-1: 0] b = din[127: 96 ];
-    wire [N-1: 0] c = din[95 : 64 ];
-    wire [N-1: 0] d = din[63 : 32 ];
-    wire [N-1: 0] e = din[31 : 0 ];
+    wire [N-1: 0] a = r_din[159: 128];
+    wire [N-1: 0] b = r_din[127: 96 ];
+    wire [N-1: 0] c = r_din[95 : 64 ];
+    wire [N-1: 0] d = r_din[63 : 32 ];
+    wire [N-1: 0] e = r_din[31 : 0 ];
 
     always@ (*) begin
         k = 32'd0;
@@ -52,6 +52,6 @@ module sha1_round
     assign a_shift = {a[26: 0], a[31:27]};
     assign b_shift = {b[1 : 0], b[31: 2]};
     assign add_result = (a_shift + ((f + k) + (e + w)));
-    assign dout = {add_result, a, b_shift, c, d};
+    assign r_dout = {add_result, a, b_shift, c, d};
 
 endmodule

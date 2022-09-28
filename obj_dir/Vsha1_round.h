@@ -28,10 +28,10 @@ class Vsha1_round VL_NOT_FINAL {
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
-    VL_INW((&din),159,0,5);
+    VL_INW((&r_din),159,0,5);
     VL_IN(&w,31,0);
     VL_IN8(&round,7,0);
-    VL_OUTW((&dout),159,0,5);
+    VL_OUTW((&r_dout),159,0,5);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
