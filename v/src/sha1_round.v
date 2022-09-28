@@ -11,56 +11,47 @@
 >>              : (2)My
 >> V180121      : World.
 ************************************************************/
-//module sha1_round(
-//  input [159 : 0] 
-//);
+/* verilator lint_off UNSIGNED */
+module sha1_round
+    #(parameter N = 32)(
+        input [159 : 0]  din      ,
+        input [31  : 0]  w        ,
+        input [7   : 0]  round    ,
+//        input            valid_r  ,                  // round 有效信号
+    
+        output [159 : 0] dout     
+//        output           ready_r                    // 80 轮加密结束后拉高
+);
 
+    //循环所用函数
+    reg [N-1: 0] f;
+    reg [N-1: 0] k;
+    wire [N-1: 0] a_shift, b_shift, add_result;
+    wire [N-1: 0] a = din[159: 128];
+    wire [N-1: 0] b = din[127: 96 ];
+    wire [N-1: 0] c = din[95 : 64 ];
+    wire [N-1: 0] d = din[63 : 32 ];
+    wire [N-1: 0] e = din[31 : 0 ];
 
-
-module sha1_round(
-    input  [31:0] a,
-    input  [31:0] b,
-    input  [31:0] c,
-    input  [31:0] d,
-    input  [31:0] e,
-    input  [31:0] w0,
-    input  [8:0]  t,
-
-    output wire [31:0]a_next
-    );
-
-//循环所用常数
-parameter K_t0  = 32'h5A82_7999;
-parameter K_t20 = 32'h6ED9_EBA1;
-parameter K_t40 = 32'h8F1B_BCDC;
-parameter K_t60 = 32'hCA62_C1D6;
-
-//根据循环次数判断下一个a如何计算
-assign a_next = (t< 20) ? {a[26:0], a[31:27]} +F_t0 (b,c,d) +e +w0 +K_t0:
-                (t< 40) ? {a[26:0], a[31:27]} +F_t20(b,c,d) +e +w0 +K_t20:
-                (t< 60) ? {a[26:0], a[31:27]} +F_t40(b,c,d) +e +w0 +K_t40:
-                (t< 80) ? {a[26:0], a[31:27]} +F_t20(b,c,d) +e +w0 +K_t60: 32'h0;
-
-//循环所用函数
-function [31:0]F_t0;//0<=t<=19
-    input[31:0]B,C,D;
-    begin
-        F_t0 = (B&C)^(~B&D);
+    always@ (*) begin
+        k = 32'd0;
+        if((round >= 8'd0 ) && (round <= 8'd19)) k = 32'h5A82_7999;
+        if((round >= 8'd20) && (round <= 8'd39)) k = 32'h6ED9_EBA1;
+        if((round >= 8'd40) && (round <= 8'd59)) k = 32'h8F1B_BCDC;
+        if((round >= 8'd60) && (round <= 8'd79)) k = 32'hCA62_C1D6;
     end
-endfunction
 
-function [31:0]F_t40;//40<=t<=59
-    input[31:0]B,C,D;
-    begin
-        F_t40 = (B&C)^(B&D)^(C&D); 
+    always@ (*) begin
+        f = 32'h0;
+        if((round >= 8'd0 ) && (round <= 8'd19)) f = ((b & c) | (~b & d));
+        if((round >= 8'd20) && (round <= 8'd39)) f = (b ^ c ^ d);
+        if((round >= 8'd40) && (round <= 8'd59)) f = ((b & c) | (b & d) | (c & d));
+        if((round >= 8'd60) && (round <= 8'd79)) f = (b ^ c ^ d);
     end
-endfunction
 
-function [31:0]F_t20;//20<=t<=39;60<=t<=79
-    input [31:0]B,C,D;
-    begin
-        F_t20 = B^C^D;
-    end
-endfunction
+    assign a_shift = {a[26: 0], a[31:27]};
+    assign b_shift = {b[1 : 0], b[31: 2]};
+    assign add_result = (a_shift + ((f + k) + (e + w)));
+    assign dout = {add_result, a, b_shift, c, d};
 
 endmodule

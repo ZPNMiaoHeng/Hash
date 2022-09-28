@@ -34,7 +34,7 @@ SRC_DIR = $(SHA1_V)/src
 CPP_DIR = $(SHA1_V)/cpp
 
 #######################################################################
-VSRC += $(SRC_DIR)/sha1_con.v
+VSRC += $(SRC_DIR)/$(TOP).v
 #VSRC += $(shell find $(SRC_DIR) -name *.v)
 #CSRC += $(CPP_DIR)/
 CSRC += $(shell find $(CPP_DIR) -name *.cpp)
