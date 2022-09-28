@@ -7,7 +7,7 @@ _default:
 #>>    observe waveform by GTKwave.
 ######################################################################
 ifneq ($(words $(CURDIR)),1)
- $(error Unsupported: GNU Make cannot build in directories containing spaces, build elsewhere: '$(CURDIR)')
+	$(error Unsupported: GNU Make cannot build in directories containing spaces, build elsewhere: '$(CURDIR)')
 endif
 
 ######################################################################
@@ -28,13 +28,15 @@ SHA1_V = $(SHA1_HOME)/v
 #######################################################################
 #DIFINE
 # Default test verilog file name
-TOP =	SHA1
+TOP =	sha1_con
 VERILOG_NAME  = $(TOP)
 SRC_DIR = $(SHA1_V)/src
 CPP_DIR = $(SHA1_V)/cpp
 
 #######################################################################
-VSRC += $(shell find $(SRC_DIR) -name *.v)
+VSRC += $(SRC_DIR)/sha1_con.v
+#VSRC += $(shell find $(SRC_DIR) -name *.v)
+#CSRC += $(CPP_DIR)/
 CSRC += $(shell find $(CPP_DIR) -name *.cpp)
 VERILATOR_INPUT =  $(VSRC) $(CSRC)
 
