@@ -40,8 +40,8 @@ VSRC += $(SRC_DIR)/sha1_con.v
 CSRC += $(shell find $(CPP_DIR) -name *.cpp)
 VERILATOR_INPUT =  $(VSRC) $(CSRC)
 
-GTK_DIR = $(SHA1_V)/build/dump.vcd
-OBJ_DIR = $(SHA1_V)/obj_dir
+GTK_DIR = ./build/dump.vcd
+OBJ_DIR = ./obj_dir
 #######################################################################
 # Verliater option-- Generate C++ in executable form and coverage analysis               
 VERILATOR_FLAGS += --cc --exe -Wall --trace --coverage \
