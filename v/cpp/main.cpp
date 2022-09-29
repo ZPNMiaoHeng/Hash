@@ -37,10 +37,6 @@ void sim_init(){
     top->valid = 0;
 //    top->t = 0;
     top->din[0] = 0;
-    top->din[1] = 0;
-    top->din[2] = 0;
-    top->din[3] = 0;
-    top->din[4] = 0;
 }
 
 
@@ -50,10 +46,10 @@ void data_set() {
   }
   if (contextp->time() >= 60) {                             // control signals
     top->valid = 1;
-//    top->din[0] = 0x18;
-//    top->din[15] = 0x61626380;
-    top->din[15] = 0x31800000;
-    top->din[0] = 0x8;
+    top->din[0] = 0x18;
+    top->din[15] = 0x61626380;
+//    top->din[15] = 0x31800000;
+//    top->din[0] = 0x8;
   }
 }
 
