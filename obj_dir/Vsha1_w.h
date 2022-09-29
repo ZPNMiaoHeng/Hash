@@ -5,33 +5,36 @@
 // The class here is then constructed to instantiate the design.
 // See the Verilator manual for examples.
 
-#ifndef VERILATED_VSHA1_ROUND_H_
-#define VERILATED_VSHA1_ROUND_H_  // guard
+#ifndef VERILATED_VSHA1_W_H_
+#define VERILATED_VSHA1_W_H_  // guard
 
 #include "verilated_heavy.h"
 #include "verilated_cov.h"
 
-class Vsha1_round__Syms;
-class Vsha1_round___024root;
+class Vsha1_w__Syms;
+class Vsha1_w___024root;
 class VerilatedVcdC;
-class Vsha1_round_VerilatedVcd;
+class Vsha1_w_VerilatedVcd;
 
 
 // This class is the main interface to the Verilated model
-class Vsha1_round VL_NOT_FINAL {
+class Vsha1_w VL_NOT_FINAL {
   private:
     // Symbol table holding complete model state (owned by this class)
-    Vsha1_round__Syms* const vlSymsp;
+    Vsha1_w__Syms* const vlSymsp;
 
   public:
 
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
-    VL_INW((&r_din),159,0,5);
-    VL_IN(&w,31,0);
-    VL_IN8(&round,7,0);
-    VL_OUTW((&r_dout),159,0,5);
+    VL_IN8(&clk,0,0);
+    VL_IN8(&rst_n,0,0);
+    VL_IN8(&valid_w,0,0);
+    VL_IN8(&t,7,0);
+    VL_INW((&din),511,0,16);
+    VL_OUT(&w,31,0);
+    VL_OUT8(&ready_w,0,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
@@ -39,19 +42,19 @@ class Vsha1_round VL_NOT_FINAL {
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
-    Vsha1_round___024root* const rootp;
+    Vsha1_w___024root* const rootp;
 
     // CONSTRUCTORS
     /// Construct the model; called by application code
     /// If contextp is null, then the model will use the default global context
     /// If name is "", then makes a wrapper with a
     /// single model invisible with respect to DPI scope names.
-    explicit Vsha1_round(VerilatedContext* contextp, const char* name = "TOP");
-    explicit Vsha1_round(const char* name = "TOP");
+    explicit Vsha1_w(VerilatedContext* contextp, const char* name = "TOP");
+    explicit Vsha1_w(const char* name = "TOP");
     /// Destroy the model; called (often implicitly) by application code
-    virtual ~Vsha1_round();
+    virtual ~Vsha1_w();
   private:
-    VL_UNCOPYABLE(Vsha1_round);  ///< Copying not allowed
+    VL_UNCOPYABLE(Vsha1_w);  ///< Copying not allowed
 
   public:
     // API METHODS

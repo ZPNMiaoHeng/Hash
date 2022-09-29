@@ -1,4 +1,4 @@
-main.o: ../v/cpp/main.cpp Vsha1_round.h \
+main.o: ../v/cpp/main.cpp Vsha1_w.h \
  /home/zpn/verilator/include/verilated_heavy.h \
  /home/zpn/verilator/include/verilated.h \
  /home/zpn/verilator/include/verilatedos.h \

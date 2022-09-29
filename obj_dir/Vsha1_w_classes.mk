@@ -2,7 +2,7 @@
 # DESCRIPTION: Verilator output: Make include file with class lists
 #
 # This file lists generated Verilated files, for including in higher level makefiles.
-# See Vsha1_round.mk for the caller.
+# See Vsha1_w.mk for the caller.
 
 ### Switches...
 # C11 constructs required?  0/1 (always on now)
@@ -25,21 +25,22 @@ VM_TRACE_FST_WRITER_THREAD = 0
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-	Vsha1_round \
-	Vsha1_round___024root \
+	Vsha1_w \
+	Vsha1_w___024root \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	Vsha1_round___024root__Slow \
+	Vsha1_w__ConstPool_0 \
+	Vsha1_w___024root__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Vsha1_round__Trace \
+	Vsha1_w__Trace \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-	Vsha1_round__Syms \
-	Vsha1_round__Trace__Slow \
+	Vsha1_w__Syms \
+	Vsha1_w__Trace__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
