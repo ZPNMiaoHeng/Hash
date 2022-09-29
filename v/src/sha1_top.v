@@ -23,7 +23,7 @@ module sha1_top (
   parameter H4 = 32'hC3D2_E1F0;
 
   wire [7 : 0] t;
-  wire [31: 0] w_temp;
+  wire [31: 0] w_temp, a_temp, b_temp, c_temp, d_temp, e_temp;
   wire [159 : 0] r_din_temp;
   reg  [159 : 0] r_din;
 
@@ -45,7 +45,7 @@ end
     .valid (valid),
 
     .t       (t     ),
-    .ready_t ( ready)
+    .ready_t (ready )
   );
 
   sha1_w u_w (
@@ -56,7 +56,6 @@ end
     .din     (din   ),
 
     .w       (w_temp )
-//    .ready_w (ready  )
   );
 
   sha1_round u_round (
@@ -66,7 +65,12 @@ end
 
     .r_dout (r_din_temp)
   );
-  assign dout = (t == 8'd79) ? r_din_temp: 160'd0;
-//  assign ready = (t == 8'd79);
+  assign a_temp = (t == 8'd80) ? (r_din_temp[159: 128] + H0): 32'd0;
+  assign b_temp = (t == 8'd80) ? (r_din_temp[127: 96 ] + H1): 32'd0;
+  assign c_temp = (t == 8'd80) ? (r_din_temp[95 : 64 ] + H2): 32'd0;
+  assign d_temp = (t == 8'd80) ? (r_din_temp[63 : 32 ] + H3): 32'd0;
+  assign e_temp = (t == 8'd80) ? (r_din_temp[31 : 0  ] + H4): 32'd0;
+
+  assign dout = {a_temp, b_temp, c_temp, d_temp, e_temp};
 
 endmodule

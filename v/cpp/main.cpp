@@ -52,8 +52,8 @@ void data_set() {
     top->valid = 1;
 //    top->din[0] = 0x18;
 //    top->din[15] = 0x61626380;
-    top->din[0] = 0x1;
-    top->din[15] = 0x1;
+    top->din[15] = 0x31800000;
+    top->din[0] = 0x8;
   }
 }
 

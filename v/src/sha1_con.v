@@ -9,7 +9,6 @@ module sha1_con(
 
   parameter IDLE  = 2'b00;
   parameter ROUND = 2'b01;
-  parameter DONE  = 2'b10;
 
   reg [7 :0] t_tem;
   reg [1 :0] s_cur, s_next;
@@ -35,20 +34,14 @@ module sha1_con(
       end
 
       ROUND: begin
-        if(t < 8'h4e) begin
+        if(t < 8'h50) begin
           s_next = ROUND;
-        end
-        else if (t == 8'h4e) begin
-          s_next = DONE;
         end
         else begin
           s_next = IDLE;
         end
       end
 
-      DONE: begin
-        s_next = IDLE;
-      end
       default: s_next = IDLE;
     endcase
   end
@@ -60,16 +53,13 @@ module sha1_con(
     else if(s_cur == ROUND) begin
       t_tem <= t_tem + 1'b1;
     end
-    else if(s_cur == DONE) begin
-      t_tem <= t_tem;
-    end
     else begin
       t_tem <= 8'b0;
     end
   end
   
 //-------------------------------- Result --------------------------------------
-  assign ready_t = ((s_cur == DONE) && (t == 8'h4f)) ;
+  assign ready_t = ((s_cur == ROUND) && (t == 8'h50)) ;
   assign t = t_tem;
 
 endmodule

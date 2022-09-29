@@ -29,7 +29,7 @@ class Vsha1_top__Syms final : public VerilatedSyms {
     Vsha1_top___024root            TOP;
 
     // COVERAGE
-    uint32_t __Vcoverage[798];
+    uint32_t __Vcoverage[955];
 
     // CONSTRUCTORS
     Vsha1_top__Syms(VerilatedContext* contextp, const char* namep, Vsha1_top* modelp);

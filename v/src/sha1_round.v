@@ -17,10 +17,8 @@ module sha1_round
         input [159 : 0]  r_din    ,
         input [31  : 0]  w        ,
         input [7   : 0]  round    ,
-//        input            valid_r  ,                  // round 有效信号
     
         output [159 : 0] r_dout     
-//        output           ready_r                    // 80 轮加密结束后拉高
 );
 
     //循环所用函数
@@ -35,18 +33,18 @@ module sha1_round
 
     always@ (*) begin
         k = 32'd0;
-        if((round >= 8'd0 ) && (round <= 8'd19)) k = 32'h5A82_7999;
-        if((round >= 8'd20) && (round <= 8'd39)) k = 32'h6ED9_EBA1;
-        if((round >= 8'd40) && (round <= 8'd59)) k = 32'h8F1B_BCDC;
-        if((round >= 8'd60) && (round <= 8'd79)) k = 32'hCA62_C1D6;
+        if((round > 8'd0 ) && (round <= 8'd20)) k = 32'h5A82_7999;
+        if((round > 8'd20) && (round <= 8'd40)) k = 32'h6ED9_EBA1;
+        if((round > 8'd40) && (round <= 8'd60)) k = 32'h8F1B_BCDC;
+        if((round > 8'd60) && (round <= 8'd80)) k = 32'hCA62_C1D6;
     end
 
     always@ (*) begin
         f = 32'h0;
-        if((round >= 8'd0 ) && (round <= 8'd19)) f = ((b & c) | (~b & d));
-        if((round >= 8'd20) && (round <= 8'd39)) f = (b ^ c ^ d);
-        if((round >= 8'd40) && (round <= 8'd59)) f = ((b & c) | (b & d) | (c & d));
-        if((round >= 8'd60) && (round <= 8'd79)) f = (b ^ c ^ d);
+        if((round > 8'd0 ) && (round <= 8'd20)) f = ((b & c) | (~b & d));
+        if((round > 8'd20) && (round <= 8'd40)) f = (b ^ c ^ d);
+        if((round > 8'd40) && (round <= 8'd60)) f = ((b & c) | (b & d) | (c & d));
+        if((round > 8'd60) && (round <= 8'd80)) f = (b ^ c ^ d);
     end
 
     assign a_shift = {a[26: 0], a[31:27]};

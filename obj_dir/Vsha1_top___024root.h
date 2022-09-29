@@ -32,6 +32,11 @@ VL_MODULE(Vsha1_top___024root) {
     CData/*1:0*/ sha1_top__DOT__u_con__DOT__s_cur;
     CData/*1:0*/ sha1_top__DOT__u_con__DOT__s_next;
     IData/*31:0*/ sha1_top__DOT__w_temp;
+    IData/*31:0*/ sha1_top__DOT__a_temp;
+    IData/*31:0*/ sha1_top__DOT__b_temp;
+    IData/*31:0*/ sha1_top__DOT__c_temp;
+    IData/*31:0*/ sha1_top__DOT__d_temp;
+    IData/*31:0*/ sha1_top__DOT__e_temp;
     VlWide<5>/*159:0*/ sha1_top__DOT__r_din_temp;
     VlWide<5>/*159:0*/ sha1_top__DOT__r_din;
     VlWide<16>/*511:0*/ sha1_top__DOT__u_w__DOT__din_temp;
@@ -56,6 +61,11 @@ VL_MODULE(Vsha1_top___024root) {
     CData/*0:0*/ __Vclklast__TOP__rst_n;
     VlWide<5>/*159:0*/ sha1_top__DOT____Vtogcov__dout;
     IData/*31:0*/ sha1_top__DOT____Vtogcov__w_temp;
+    IData/*31:0*/ sha1_top__DOT____Vtogcov__a_temp;
+    IData/*31:0*/ sha1_top__DOT____Vtogcov__b_temp;
+    IData/*31:0*/ sha1_top__DOT____Vtogcov__c_temp;
+    IData/*31:0*/ sha1_top__DOT____Vtogcov__d_temp;
+    IData/*31:0*/ sha1_top__DOT____Vtogcov__e_temp;
     VlWide<5>/*159:0*/ sha1_top__DOT____Vtogcov__r_din_temp;
     VlWide<5>/*159:0*/ sha1_top__DOT____Vtogcov__r_din;
     IData/*31:0*/ sha1_top__DOT__u_w__DOT____Vtogcov__w_gen_temp;
