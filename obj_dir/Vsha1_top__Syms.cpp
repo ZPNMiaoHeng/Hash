@@ -1,16 +1,16 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Symbol table implementation internals
 
-#include "Vsha1_w__Syms.h"
-#include "Vsha1_w.h"
-#include "Vsha1_w___024root.h"
+#include "Vsha1_top__Syms.h"
+#include "Vsha1_top.h"
+#include "Vsha1_top___024root.h"
 
 // FUNCTIONS
-Vsha1_w__Syms::~Vsha1_w__Syms()
+Vsha1_top__Syms::~Vsha1_top__Syms()
 {
 }
 
-Vsha1_w__Syms::Vsha1_w__Syms(VerilatedContext* contextp, const char* namep,Vsha1_w* modelp)
+Vsha1_top__Syms::Vsha1_top__Syms(VerilatedContext* contextp, const char* namep,Vsha1_top* modelp)
     : VerilatedSyms{contextp}
     // Setup internal state of the Syms class
     , __Vm_modelp(modelp)

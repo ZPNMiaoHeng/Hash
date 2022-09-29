@@ -28,14 +28,14 @@ SHA1_V = $(SHA1_HOME)/v
 #######################################################################
 #DIFINE
 # Default test verilog file name
-TOP =	sha1_con
+TOP =	sha1_top
 VERILOG_NAME  = $(TOP)
 SRC_DIR = $(SHA1_V)/src
 CPP_DIR = $(SHA1_V)/cpp
 
 #######################################################################
-VSRC += $(SRC_DIR)/$(TOP).v
-#VSRC += $(shell find $(SRC_DIR) -name *.v)
+#VSRC += $(SRC_DIR)/$(TOP).v
+VSRC += $(shell find $(SRC_DIR) -name *.v)
 #CSRC += $(CPP_DIR)/
 CSRC += $(shell find $(CPP_DIR) -name *.cpp)
 VERILATOR_INPUT =  $(VSRC) $(CSRC)

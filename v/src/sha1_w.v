@@ -16,8 +16,8 @@ module sha1_w
     input [7   :0] t     ,
     input [511 :0] din   ,
 
-    output [N-1 :0] w    ,
-    output          ready_w 
+    output [N-1 :0] w    
+//    output          ready_w 
 );
   reg [511: 0] din_temp;
   wire [511: 0] din_temp_shift ;
@@ -28,9 +28,10 @@ module sha1_w
       din_temp <= 512'h0 ;
     end else if((t == 8'd0) && valid_w) begin
       din_temp <= din    ;
-    end else if((t > 8'd0) && (t <= 8'd79)) begin
+    end else if((t >= 8'd1) && (t <= 8'd79)) begin
       din_temp <= din_temp_shift ;
-    end
+    end else 
+      din_temp <= 512'h0;
   end
 
 //---------------------------------------------------------------
@@ -42,7 +43,7 @@ module sha1_w
                           (t >= 8'd16) && (t <= 8'd79)  ? {din_temp[479: 0], w_gen}              : 512'h0;
 
   assign w= ((t >= 8'd0) && (t <= 8'd15)) ? din_temp[511: 480] : w_gen;
-  assign ready_w = (t == 8'd79);
+//  assign ready_w = (t == 8'd79);
 
 endmodule
 
